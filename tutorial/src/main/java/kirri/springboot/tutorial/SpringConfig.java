@@ -1,6 +1,7 @@
 package kirri.springboot.tutorial;
 
 import kirri.springboot.tutorial.repository.JdbcMemberRepository;
+import kirri.springboot.tutorial.repository.JdbcTemplateMemberRepository;
 import kirri.springboot.tutorial.repository.MemberRepository;
 import kirri.springboot.tutorial.repository.MemoryMemberRepository;
 import kirri.springboot.tutorial.service.MemberService;
@@ -26,6 +27,7 @@ public class SpringConfig {
     @Bean
     public MemberRepository memberRepository() {
         //return new MemoryMemberRepository();
-        return new JdbcMemberRepository(dataSource);
+        //return new JdbcMemberRepository(dataSource);
+        return new JdbcTemplateMemberRepository(dataSource);
     }
 }
