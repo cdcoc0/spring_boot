@@ -1,23 +1,30 @@
 package kirri.springboot.tutorial;
 
-import kirri.springboot.tutorial.repository.JdbcMemberRepository;
-import kirri.springboot.tutorial.repository.JdbcTemplateMemberRepository;
-import kirri.springboot.tutorial.repository.MemberRepository;
-import kirri.springboot.tutorial.repository.MemoryMemberRepository;
+import kirri.springboot.tutorial.repository.*;
 import kirri.springboot.tutorial.service.MemberService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
+import javax.persistence.EntityManager;
 import javax.sql.DataSource;
 
 @Configuration
 public class SpringConfig {
 
-    private DataSource dataSource;
+    private EntityManager em;
 
-    public SpringConfig(DataSource dataSource) {
-        this.dataSource = dataSource;
+    @Autowired
+    public SpringConfig(EntityManager em) {
+        this.em = em;
     }
+
+//    private DataSource dataSource;
+//
+//    @Autowired
+//    public SpringConfig(DataSource dataSource) {
+//        this.dataSource = dataSource;
+//    }
 
     @Bean
     public MemberService memberService() {
@@ -26,8 +33,9 @@ public class SpringConfig {
 
     @Bean
     public MemberRepository memberRepository() {
-        //return new MemoryMemberRepository();
-        //return new JdbcMemberRepository(dataSource);
-        return new JdbcTemplateMemberRepository(dataSource);
+//        return new MemoryMemberRepository();
+//        return new JdbcMemberRepository(dataSource);
+//        return new JdbcTemplateMemberRepository(dataSource);
+        return new JpaMemberRepository(em);
     }
 }

@@ -1,7 +1,18 @@
 package kirri.springboot.tutorial.domain;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+
+@Entity
 public class Member {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY) //id 자동 생성
     private Long id;
+
+    //@Column(name = "username") 컬럼명이 username인 경우 해당 컬럼과 매핑
     private String name;
 
     public Long getId() {
