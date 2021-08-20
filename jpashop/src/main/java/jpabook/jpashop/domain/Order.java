@@ -25,10 +25,14 @@ public class Order {
     @OneToMany(mappedBy = "order")
     private List<OrderItem> orderItem = new ArrayList<>();
 
+    @OneToOne
+    //1 : 1관계인 경우 액세스 빈도수가 많은 곳에 포린키
+    @JoinColumn(name = "delivery_id")
     private Delivery delivery;
 
 //    private Date date;
     private LocalDateTime orderDate; //주문 시간, hibernate가 알아서 날짜 관련 매핑 지원
 
+    @Enumerated(EnumType.STRING)
     private OrderStatus status; //주문 상태 [ORDER, CANCEL]
 }
