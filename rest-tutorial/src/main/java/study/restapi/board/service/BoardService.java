@@ -17,4 +17,15 @@ public class BoardService {
     public List<BoardDto> selectBoardList() {
         return boardMapper.findAll();
     }
+
+    public void insertBoard(BoardDto board) {
+        boardMapper.insertBoard(board);
+    }
+
+    public BoardDto selectBoard(int boardIdx) {
+        boardMapper.updateHitCount(boardIdx);
+        BoardDto board = boardMapper.selectBoard(boardIdx);
+
+        return board;
+    }
 }
