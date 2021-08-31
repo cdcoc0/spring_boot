@@ -18,6 +18,7 @@ public class BoardService {
 //        this.boardMapper = boardMapper;
 //    }
 
+    @Transactional(readOnly = true)
     public List<BoardDto> selectBoardList() {
         return boardMapper.findAll();
     }
