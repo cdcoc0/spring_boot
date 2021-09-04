@@ -20,15 +20,19 @@ public class EmployeeController {
 
     private final EmployeeRepository repository;
 
+    private final EmployeeModelAssembler assembler;
+
     //Aggregate root
     //tag::get-aggregate-root[]
     @GetMapping("/employees")
     public CollectionModel<EntityModel<Employee>> all() { //
         List<EntityModel<Employee>> employees = repository.findAll().stream()
-                .map(employee -> EntityModel.of(employee,
+                .map(assembler::toModel)
+                .collect(Collectors.toList());
+                /*.map(employee -> EntityModel.of(employee,
                         linkTo(methodOn(EmployeeController.class).one(employee.getId())).withSelfRel(),
                         linkTo(methodOn(EmployeeController.class).all()).withRel("employees")))
-                .collect(Collectors.toList());
+                .collect(Collectors.toList());*/
         return CollectionModel.of(employees,
                 linkTo(methodOn(EmployeeController.class).all()).withSelfRel());
     }
@@ -45,9 +49,10 @@ public class EmployeeController {
     public EntityModel<Employee> one(@PathVariable Long id) { //EntityModel<T> ==> 제네릭
         Employee employee = repository.findById(id)
                 .orElseThrow(() -> new EmployeeNotFoundException(id));
-        return EntityModel.of(employee,
+        return assembler.toModel(employee);
+        /*return EntityModel.of(employee,
                 linkTo(methodOn(EmployeeController.class).one(id)).withSelfRel(),
-                linkTo(methodOn(EmployeeController.class).all()).withRel("employees"));
+                linkTo(methodOn(EmployeeController.class).all()).withRel("employees"));*/
     }
 
     @PutMapping("/employees/{id}")
