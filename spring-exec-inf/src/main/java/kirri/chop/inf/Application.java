@@ -15,12 +15,12 @@ public class Application {
         app.run(args);
     }
 
-    @Bean
-    public Holoman holoman() {
-        Holoman holo = new Holoman();
-        holo.setName("kirrrri");
-        holo.setHowLong(50);
-        return holo;
-    }
+//    @Bean
+//    public Holoman holoman() {
+//        Holoman holo = new Holoman();
+//        holo.setName("kirrrri");
+//        holo.setHowLong(50);
+//        return holo;
+//    }
     //여기서 빈 설정을 해줘도 이 빈을 컴포넌트 스캔한 뒤 auto configuration 빈이 등록되면서 덮어버림
 }
