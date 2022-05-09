@@ -1,0 +1,23 @@
+{
+  "hints": [],
+  "groups": [
+    {
+      "sourceType": "kirri.chop.inf.HolomanProperties",
+      "name": "holoman",
+      "type": "kirri.chop.inf.HolomanProperties"
+    }
+  ],
+  "properties": [
+    {
+      "sourceType": "kirri.chop.inf.HolomanProperties",
+      "defaultValue": 0,
+      "name": "holoman.how-long",
+      "type": "java.lang.Integer"
+    },
+    {
+      "sourceType": "kirri.chop.inf.HolomanProperties",
+      "name": "holoman.name",
+      "type": "java.lang.String"
+    }
+  ]
+}
