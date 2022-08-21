@@ -35,13 +35,13 @@ public class Application {
 
     public static void main(String[] args)
     {
-        new SpringApplicationBuilder()
-                .sources(Application.class)
-                .run(args);
+//        new SpringApplicationBuilder()
+//                .sources(Application.class)
+//                .run(args);
 
 //        SpringApplication app = new SpringApplication(Application.class);
 //        app.run(args);
 
-//        SpringApplication.run(Application.class, args);
+        SpringApplication.run(Application.class, args);
     }
 }
