@@ -1,5 +1,6 @@
 package kirri.chop.springinit;
 
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.ApplicationArguments;
 import org.springframework.boot.ApplicationRunner;
 import org.springframework.boot.CommandLineRunner;
@@ -15,7 +16,7 @@ import java.util.Arrays;
 
 
 //애플리케이션 실행된 후
-@Component
+//@Component
 public class SampleListener implements ApplicationRunner {
     @Override
     public void run(ApplicationArguments args) throws Exception {
